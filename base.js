@@ -82,7 +82,7 @@ now constants me kch b changes hongee toh constants kr skte h check : utils/cons
 
 /* connect with mongoDB
 vahi mann jo seekha tha tune about mongoose ORM use krte h to connect with mongodb into much nicer and good format:
-read about mongoose and make a default function to connect and mongoatlas setup krow and callit on index simple
+read about mongoose and make a default function to connect and mongoatlas setup krow and callit on index simple -> check db/index.js
 
 */
 
