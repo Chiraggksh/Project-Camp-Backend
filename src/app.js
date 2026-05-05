@@ -5,7 +5,7 @@ const app = express();
 
 //some basic middleware configurations setup:
 app.use(express.json({ limit: "16kb" })); // this helps to take json data and parse it as req: direct req.body me content ajaega vrna it will return as undefined
-app.use(express.urlencoded({ extended: true, limit: "16kb" })); //this helps to send objects in objects nested objects used in form like { user: { name: 'Chirag', age: 21 } }
+app.use(express.urlencoded({ extended: true, limit: "16kb" })); //use to accept data from url itself and this helps to send objects in objects nested objects used in form like { user: { name: 'Chirag', age: 21 } }
 app.use(express.static("public"));
 
 //cors configuration

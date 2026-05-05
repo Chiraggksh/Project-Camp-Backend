@@ -33,15 +33,18 @@ prettierrc: for configuration
 .prettierignore : to ignore formatting some files
 orr baaki docs me check krlena 
 npx prettier . --write : to write
-npx prettier . --check : to check 
+npx prettier . --check : to check
+
+along with this initialise as git repo: git init, .gitignore, add, commit, 
 */
 
 /* nodemon + env set
 #to automatically restart your server u use nodemon
-in package json mein start is used for production so node is used and dev is used to develop so usme hm nodemon use krr skte h
+in package json mein start is used for production so node is used and dev is used to develop so usme hm nodemon use krr skte h udhrr
 
 # env ka use?
-bhai server dont store everything because there are chances that can get leaked hence they use a secure information to take the data from there
+bhai server dont store everything because there are chances that can get leaked hence they use a secure information to take the data from there 
+npm i dotenv yee install krlow 
 hence we use .env : phle package download krr iska : and check for documentations and setup krow, config krow and then use them in your work
 
  */
@@ -49,7 +52,7 @@ hence we use .env : phle package download krr iska : and check for documentation
 //Project structure
 /*
 public folder will be serving static files like images, etc
-src folder: have codes have different folder -> controllers (all function logic etc), db (creation, deletion, updation everything), middlewares, models (structure how u keep data in db)
+src folder: have codes have different folder -> controllers (all function logic etc), db (creation, deletion, updation everything), middlewares (in between work), models (structure how u keep data in db)
                                                 routes (all routing info), utils (emails etc), validators (to validate data)
 */
 
@@ -60,6 +63,7 @@ postman: api testing tool h yee -> new collection: new folder: then new request 
 
 /* restructure code for personal preference
 Restructuring code again : separation of app with index : ek alg hi file rkhoww express ki name app.js and just import that in index.js looks very clean
+taki express ki sari dependency alg file me hi aaee
  */
 
 /* express configuration and CORS
