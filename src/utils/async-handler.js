@@ -5,3 +5,6 @@ const asyncHandler = (requestHandler) => {
 };
 
 export { asyncHandler };
+
+
+//iska fyda yeee h naa toh br brr catch block lgana h and also naa next ka use krnaa which im not even using just function bnaoo and jo apko main kaam krna h vo krdoww 

@@ -86,7 +86,15 @@ now constants me kch b changes hongee toh constants kr skte h check : utils/cons
 
 /* connect with mongoDB
 vahi mann jo seekha tha tune about mongoose ORM use krte h to connect with mongodb into much nicer and good format:
+npm i mongoose : and db folder me daldo aapkaa function
 read about mongoose and make a default function to connect and mongoatlas setup krow and callit on index simple -> check db/index.js
+hmne bss function bnaayaa h connectDB ka and sorted 
+
+mongo db mee jakee get connection string dhundo:
+create collection bhi krr skte ho
+
+browse collection part me free clusterr h: pop up me compass click kroww and get the connection url
+projmanage daldo url me add 
 
 */
 
@@ -96,7 +104,8 @@ so this is itt bhaii mere this much minimum preparation is generally required to
 now jb b hm aws ya kahi b dalte h there is always healthcheck jo system ki health btata h : so basically overall work ab kch aisa hoga ki we will use controllers jisme hmara main logic hoga, routes jisme saare endpoint serve honge, and then we will be calling them on app.js
 router mein bhi boiler plate use hota h ek check in routes folder
 
-now we will use try catch ka alternative 
+now we will use try catch ka alternative see controllers/routers and app.js me healthcheck ka code 
+basically controllers ka code export hokrr jata h route me : route use route krtaa h alg alg directions me and app.js healthcheck route me kaam krta h thats it
 
 */
 
