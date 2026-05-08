@@ -109,15 +109,41 @@ basically controllers ka code export hokrr jata h route me : route use route krt
 
 */
 
-/*CAtch error better with async handler
+/* CAtch error better with async handler
 vahi bhaii async await vala scene add krdo jb b db se lena ho so avoid too many try catch : next ka use in other way check in utils/async-handler and it is a genericc function
 u can use it anywhere
 */
 
 /*user schema
 bhaiii ab frontend se aega data and we need to register into it: today we are learning about how we can add routes actual prd ka work started
-check user models for register to make schema
+check user models for register to make schema......for random image u can use placehold.co image prr jake 
+mongoose helps u in having unique values, lowercase etc sb easy hojataaa h mongoose se
+
+required: [true, "kch bhi daalskte"]
+timestamps se created at and updated at aajata h
+mongooose se schema se methods and hooks bhi attack kiee ja skte h 
 
 schema bnaya using 2 {},{}
 first stores data and second stores timestamps: so schema can also store methods jo ki controller me jate vse ...so can also write methods as well as hooks
+*/
+
+/* HOOKS mtlb kya h?
+
+schema me just before saving data : prehook and just after saving data: posthooks
+for eg: we need to encrypt pass so we need prehook to encrypt: one way h toh hashed bolege iseyyy
+bcrypt is one such library: install bcrypt library from npm 
+so import -> we write method just before exporting model....userSchema.pre("save", toh async func not arrow kyuki this pass hota h isme)
+
+but problem: kch orr kaam se save hoga toh bhi ye encrypt hoga hence u need safeguiding option:
+conditional lgado if (!this.isModified("password")) return next() 
+*/
+
+/* writing mongoose methods:
+hmne ye discuss kia tha ki mongoose me tum model schema bnane ke sath sath hooks bhi add krskte ho jse uparr kia and then aap methods bhi add krrskte ho:
+u usually write methods in controller but kch schema me hota h
+
+method me bhi userSchema.methods.name daldo
+eg isPasswordCorrect -> use async function
+and internally bcrypt.compare await me return kradooo
+
 */

@@ -1,4 +1,5 @@
 import mongoose, { Schema } from "mongoose";
+import bcrypt from "bcrypt";
 
 const userSchema = new Schema(
   {
@@ -59,5 +60,15 @@ const userSchema = new Schema(
     timestamps: true,
   },
 );
+
+userSchema.pre("save", async function(next){
+  if(!this.isModified("password")) return next(); //means password change hoga tbhi new hash bnega vrna ni: prevents unnecessary changing whenever new field is modified
+  this.password = await bcrypt.hash(this.password, 10); //no of rounds
+  next();
+})
+
+userSchema.methods.isPasswordCorrect= async function (password){
+  return await bcrypt.compare(password,this.password);  //u can also have methods into it 
+}
 
 export const User = mongoose.model("User", userSchema); //User automatically converts to users 
