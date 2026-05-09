@@ -145,5 +145,37 @@ u usually write methods in controller but kch schema me hota h
 method me bhi userSchema.methods.name daldo
 eg isPasswordCorrect -> use async function
 and internally bcrypt.compare await me return kradooo
+*/
+
+/* jwt tokens
+
+client when send req to server for every req: ek auth mechanism hona chahie ki validate hona chahiee this is where long string aati h
+isko hi json web token bolte h .....validate krne me help krta h....digital signatured hote h
+
+used for auth and info exchange : once user logged in...hrr req me jwt include hota h....authorisation header info hoti h
+
+structure of jwt?
+header.payload.signature
+
+header mtlb konsi algo u are using,
+payload mtlb info jo share krte ho encrypted form me
+signature: not readable encrypted hote
+
+access token and refresh token?
+token mtlb long string hotiii h.....ab 2 types hote h with data/ without data....
+without data means generate a long random string - used for just one time jsee verification me otp hota h thode time k liee
+2 copies hotii h one is in db and one is sent to client....and then check krta h same h to verify krdowww
+
+but data token: isme jwt aata h isme 2 token ate h
+access token: thode timeee ke liee
+refresh token: zyadaa time kee liee
+
+dono data sath hotee.....server me dono token create krte h....now access token goes to client and refresh is saved in db...access token are stateless they are not stored in db
+client bhjta h access token ki copy and then respond krte h but case hoskta h ki access token has expired....logged otu and then login
+
+if access token is expired response aata h server se 401 : timed out ab jse hi timed out refresh token bhja jata h client se and then new access token new bnta h if it matches and previous is discarded
+intercept krte h axios mee data ko dkhnee mee.....
+
+now iski codingg krtee h
 
 */
