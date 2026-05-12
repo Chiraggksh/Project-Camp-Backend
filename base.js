@@ -196,7 +196,7 @@ same method bnao generateRefreshToken...same payload lelo, and all same things a
 now how to generate without data string --3rd token?
 hence iske lie crypto module ye hote temp token used for verifying and password reset
 
-same method generateTemporaryToken and same function : import crypto, return unHashedToken=crypto.randomBytes(20).toString("hex") //hex values hoti h unko hm string me convert krte h
+same method generateTemporaryToken and same function : import crypto, unHashedToken=crypto.randomBytes(20).toString("hex") //hex values hoti h unko hm string me convert krte h
 ye db me store hogaa hence hash b krtee h const hashedToken= crypto.createHash("sha256").update(unhash ka reference).digest("hex")
 jb b ye kisi controller me use hoga tokenExpiry= Date.now() + (20*60*1000)
 return {unhash, hash, tokenExpiry}
