@@ -153,13 +153,15 @@ client when send req to server for every req: ek auth mechanism hona chahie ki v
 isko hi json web token bolte h .....validate krne me help krta h....digital signatured hote h
 
 used for auth and info exchange : once user logged in...hrr req me jwt include hota h....authorisation header info hoti h
+majorly used in authentication, authorization, session management, microservices etc and 
+normal problem yee thi agar jwt ni hota to ki session details hme db me store krni hotii hence not scalable so we came up with stateless jwt token idea
 
 structure of jwt?
 header.payload.signature
 
 header mtlb konsi algo u are using,
-payload mtlb info jo share krte ho encrypted form me
-signature: not readable encrypted hote
+payload mtlb info jo share krte ho encoded hota h (decodable hota h toh pas vgra store naa krna isme )
+signature: not readable encrypted hote (if someone modified paylod, signature change hojta h and hence invalid token)
 
 access token and refresh token?
 token mtlb long string hotiii h.....ab 2 types hote h with data/ without data....
@@ -170,12 +172,79 @@ but data token: isme jwt aata h isme 2 token ate h
 access token: thode timeee ke liee
 refresh token: zyadaa time kee liee
 
-dono data sath hotee.....server me dono token create krte h....now access token goes to client and refresh is saved in db...access token are stateless they are not stored in db
-client bhjta h access token ki copy and then respond krte h but case hoskta h ki access token has expired....logged otu and then login
+dono data sath hotee.....server me dono token create krte h....now access token goes to client and refresh token saved in db...access token are stateless they are not stored in db
+client bhjta h access token ki copy and then respond krte h but case hoskta h ki access token has expired....logged out and then login
 
 if access token is expired response aata h server se 401 : timed out ab jse hi timed out refresh token bhja jata h client se and then new access token new bnta h if it matches and previous is discarded
 intercept krte h axios mee data ko dkhnee mee.....
 
-now iski codingg krtee h
+//////////////////////////////////////////////////////////////////////////CODINGGG OF JWT ///////////////////////////////////////////////////////////////////////////////////////////////
 
+3 token bnege 2 with data (jwt) and 1 without data without data islie kyuki suppose logout ya access token stolen, toh misuse hoskta h jb tk access token ki validity h so this is used to give full control to server: 
+
+.env me ACCESS_TOKEN_SECRET = kchbhilihdooo
+ACCESS_TOKEN_EXPIRY=1d
+
+REFRESH_TOKEN_SECRET (separate secret rkh skte ho) and EXPIRY same ....1d and 10 d yesss diff formats hote h
+to generate: jsonwebtoken library install krowww......in model import jwt from ....
+
+after that userSchema method add krow generateAccessToken= function --> jwt.sign() me {_id:this._id, email:..., username... same krdoww} ye hota h payload, process.env.ACCESS_TOKEN_SECRET ....{expiresIn: env se expiry lelo}
+and return jwtsign
+
+same method bnao generateRefreshToken...same payload lelo, and all same things and return and yes refresh token me payload bhtt lesss info rkhoww
+
+now how to generate without data string --3rd token?
+hence iske lie crypto module ye hote temp token used for verifying and password reset
+
+same method generateTemporaryToken and same function : import crypto, return unHashedToken=crypto.randomBytes(20).toString("hex") //hex values hoti h unko hm string me convert krte h
+ye db me store hogaa hence hash b krtee h const hashedToken= crypto.createHash("sha256").update(unhash ka reference).digest("hex")
+jb b ye kisi controller me use hoga tokenExpiry= Date.now() + (20*60*1000)
+return {unhash, hash, tokenExpiry}
+
+sirf usermodule hote h itne complexx
+*/
+
+/* how to generate and send email templates?
+
+register ka step kya hoga, take some data, valdiate data, check if db alr exist, saved new user, user verification -> email
+generate and sending me kaam ata h
+
+mailgen library: install it, utils me jao mail.js...import Mailgen from "mailgen" abhi generate krna seekhre h
+
+const emailVerificationContent= (username,verificationUrl) =>{return {obj}} obj me body:mailgen me check krna
+same bnega forgotPasswordContent = same copied
+
+export krdoww both content {}
+
+SENDING THE EMAILLL???
+2 mail hoti h dev email, production email
+production grade -> brevo, aws ses
+
+in testing test mail platform hote h one such is mailtrap -> sandbox me jaooo
+sneding me nodemailer library env me MAILTRAP_SMTP_HOST 
+                                     ||    _PORT
+                                     ||    _USER
+                                     ||    _PASS in sbki details bhrdoww
+
+sending me nodemailer install import nodemailer const sendEmail=async(options)=>{
+    const mailGenerator= new Mailgen({theme:"default",}) branding daldoo from mailgen itself
+    }
+
+    const emailTextual = mailGenerator.generatePlaintext(options.mailgenContent)
+    same emailHTML = generate(same)
+
+    then send me const transporter= nodemailer.createTransport (
+    {host:, port: auth:{ user:, pass:}} sb lelooo env se
+    )
+
+    const mail={
+    from, to, subject, text, html,
+    }
+
+    then try catch me await transporter.sendMail(mail) and catch part me console.error("Email failed, credential cehck kroww")
+    console.error(error)
+
+    export krdoww sendEmail with content, same like abstraction
+
+    fun btt: u can also reset credentialss huihuihui
 */
