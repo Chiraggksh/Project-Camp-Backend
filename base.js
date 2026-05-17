@@ -283,6 +283,7 @@ first step bnaoo: method register user = async handler me function definition ->
 
     and then user.refreshToken=refreshToken daldo
     await user.save({validateBeforeSave: false}) as i knoww kya change kia mnee
+    await why? Because email verification token may not be saved in DB before the email is sent. If save fails, email still goes out with a token that doesn't exist in DB.
 
     return {accessToken, refreshToken } and catch me api error throw 500 and something token issue
 
@@ -298,4 +299,16 @@ first step bnaoo: method register user = async handler me function definition ->
     and then send res.status(201).json(new ApiResponse(200, {user: createdUser}, "message daaldo ki registerr krdegaaa"))
 
     then just export {registerUser}
+
+    controllers done now route kregeee:
+    route me file auth.route.js -> same boilerplate and import registerUSer and same router.route and post krdoww
+
+    app.js me import authRouter me app.use /api/v1/auth
+
+    check in postman:
+    
+    test me postman auth folder: register request link dalo and post request and then save it
+     body me jaa raw and then json: {"email":"one@one.com", "username": "one", password:"123456"}
+     and then check if thing is donee mongodb, nd mailtrap me jaake dkhiooo
+
 */

@@ -65,9 +65,8 @@ const userSchema = new Schema(
 );
 
 userSchema.pre("save", async function(next){
-  if(!this.isModified("password")) return next(); //means password change hoga tbhi new hash bnega vrna ni: prevents unnecessary changing whenever new field is modified
+  if(!this.isModified("password")) return; //means password change hoga tbhi new hash bnega vrna ni: prevents unnecessary changing whenever new field is modified
   this.password = await bcrypt.hash(this.password, 10); //no of rounds
-  next();
 })
 
 userSchema.methods.isPasswordCorrect= async function (password){
