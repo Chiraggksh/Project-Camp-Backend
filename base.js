@@ -248,3 +248,57 @@ sending me nodemailer install import nodemailer const sendEmail=async(options)=>
 
     fun btt: u can also reset credentialss huihuihui
 */
+
+/* registering the user:
+
+take data, validate, check db, save the new user and then user verification to email
+but saving me at,rt,gt,sendmail ye sari cheeze token jo hmne bnaii vo dkhegeee
+send reponse backk yee hoga hmara kaaam
+
+controller me auth.controller.js -> query ke lie models se user import lo, import api response, errors and async handler
+
+first step bnaoo: method register user = async handler me function definition -> async (req,res)=>{}
+    iske andrr: step 1 taking data data can come from body, params, or header etc
+    so const {email,user,pass,role}=req.body
+
+    to check in db: validate bdd me dkhege
+    as we know this is db call hence diff continent hence await
+    const existedUser = await User.findOne({$or:[{username},{email}]}) aisa kchh
+
+    if(existedUser)--> throw new api error -> 409, user alr exist etc ,[]
+
+    //saving the data
+    const user= await User.create({email,password, username,isemailvverified false krdo})
+
+    first temp token gen krowww
+    okayy so one diff User jo tune import kiaa that is mongoose model that it not your model but jb tune check kiaa and create kiaa now u can use functionality into it
+    and now user pe method lgake tu token generate krrskta h
+
+    then user.gen Temp token() and destructure krdow teeno ko
+
+    starting me method bnao const generateAccessandRefresh..... async(userId)=>{} and isme try catch block and then try me await user= await User.findById(userId) ye islie kia kykuki user se bnaskta hu method ko use not by User
+    user.generateAccessToken and ese hi refresh token () krdoww variable me daldooo
+
+    and then user.refreshToken=refreshToken daldo
+    await user.save({validateBeforeSave: false}) as i knoww kya change kia mnee
+
+    return {accessToken, refreshToken } and catch me api error throw 500 and something token issue
+
+    user.emailVerrification me daldo hashed token 
+    user.emailexpiry me tokenexpiry
+
+    and then user save krdo validate before save
+    ab yee logic part donee h bss ek mail bhjni ki same token can be sent to same user as well 
+
+    await sendEmail() after importing nd then {} me email: user?.email, subject: "please verify email", mailgenContent: email Verification mail gen content me(user.username, `${req.protocol}://${req.get("host")}/api/v1/users/verify-email/${unhasedToken}`) 
+    ye hmne dynamic link bnaaya and krdiaa kaam
+
+    const createdUser = now await User.findById(user._id).select("-password -refreshToken -emailveri -emailexpiry")
+    check daldo if not createdUser to throw api error -> 500, something wrong while registering yaa aisa kchh
+
+    and then send res.status(201).json(new ApiResponse(200, {user: createdUser}, "message daaldo ki registerr krdegaaa"))
+
+    then just export {registerUser}
+
+
+*/
