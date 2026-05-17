@@ -275,6 +275,8 @@ first step bnaoo: method register user = async handler me function definition ->
     and now user pe method lgake tu token generate krrskta h
 
     then user.gen Temp token() and destructure krdow teeno ko
+    user.emailVerrification me daldo hashed token 
+    user.emailexpiry me tokenexpiry
 
     starting me method bnao const generateAccessandRefresh..... async(userId)=>{} and isme try catch block and then try me await user= await User.findById(userId) ye islie kia kykuki user se bnaskta hu method ko use not by User
     user.generateAccessToken and ese hi refresh token () krdoww variable me daldooo
@@ -284,11 +286,8 @@ first step bnaoo: method register user = async handler me function definition ->
 
     return {accessToken, refreshToken } and catch me api error throw 500 and something token issue
 
-    user.emailVerrification me daldo hashed token 
-    user.emailexpiry me tokenexpiry
-
     and then user save krdo validate before save
-    ab yee logic part donee h bss ek mail bhjni ki same token can be sent to same user as well 
+    ab yee logic part donee h bss ek mail bhjni ki same email token can be sent to same user as well 
 
     await sendEmail() after importing nd then {} me email: user?.email, subject: "please verify email", mailgenContent: email Verification mail gen content me(user.username, `${req.protocol}://${req.get("host")}/api/v1/users/verify-email/${unhasedToken}`) 
     ye hmne dynamic link bnaaya and krdiaa kaam
@@ -299,6 +298,4 @@ first step bnaoo: method register user = async handler me function definition ->
     and then send res.status(201).json(new ApiResponse(200, {user: createdUser}, "message daaldo ki registerr krdegaaa"))
 
     then just export {registerUser}
-
-
 */
