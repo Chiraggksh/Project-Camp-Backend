@@ -12,11 +12,11 @@ Most backend projects stop at basic CRUD. **Project Camp goes beyond that**.
 
 This project focuses on:
 
-* 🔐 **Complete authentication lifecycle** (email verification, refresh tokens, password reset)
-* 🛡️ **Strict role-based access control (RBAC)**
-* 🧠 **Real project workflows** (projects → tasks → subtasks → notes)
-* 📦 **File uploads & metadata handling**
-* 🧩 **Extensible, production-style API design**
+- 🔐 **Complete authentication lifecycle** (email verification, refresh tokens, password reset)
+- 🛡️ **Strict role-based access control (RBAC)**
+- 🧠 **Real project workflows** (projects → tasks → subtasks → notes)
+- 📦 **File uploads & metadata handling**
+- 🧩 **Extensible, production-style API design**
 
 ---
 
@@ -24,58 +24,58 @@ This project focuses on:
 
 ### 🔐 Authentication & Security
 
-* JWT-based authentication (access + refresh tokens)
-* Email verification flow
-* Forgot & reset password system
-* Secure password change
-* Protected routes with middleware
+- JWT-based authentication (access + refresh tokens)
+- Email verification flow
+- Forgot & reset password system
+- Secure password change
+- Protected routes with middleware
 
 ### 👥 Role-Based Access Control
 
 Three-tier permission system:
 
-* **Admin** – Full system control
-* **Project Admin** – Project-level task control
-* **Member** – Task & subtask updates
+- **Admin** – Full system control
+- **Project Admin** – Project-level task control
+- **Member** – Task & subtask updates
 
 ### 📁 Project Management
 
-* Create, update & delete projects
-* View accessible projects with member details
-* Admin-only project lifecycle control
+- Create, update & delete projects
+- View accessible projects with member details
+- Admin-only project lifecycle control
 
 ### ✅ Task & Subtask Management
 
-* Tasks with assignees and status tracking
-* Subtasks with completion tracking
-* Role-based task & subtask permissions
+- Tasks with assignees and status tracking
+- Subtasks with completion tracking
+- Role-based task & subtask permissions
 
 ### 📝 Project Notes
 
-* Admin-only note creation & editing
-* Read access for all project members
+- Admin-only note creation & editing
+- Read access for all project members
 
 ### 📎 File Attachments
 
-* Multiple file uploads per task
-* Secure handling using Multer
-* Metadata tracking (URL, size, MIME type)
+- Multiple file uploads per task
+- Secure handling using Multer
+- Metadata tracking (URL, size, MIME type)
 
 ### 🩺 Health Monitoring
 
-* Dedicated health check endpoint
+- Dedicated health check endpoint
 
 ---
 
 ## 🧱 Tech Stack
 
-* **Node.js** – Runtime
-* **Express.js** – API framework
-* **MongoDB** – Database
-* **Mongoose** – ODM
-* **JWT** – Authentication
-* **Multer** – File uploads
-* **Nodemailer** – Email services
+- **Node.js** – Runtime
+- **Express.js** – API framework
+- **MongoDB** – Database
+- **Mongoose** – ODM
+- **JWT** – Authentication
+- **Multer** – File uploads
+- **Nodemailer** – Email services
 
 ---
 
@@ -115,12 +115,12 @@ Three-tier permission system:
 
 | Feature               | Admin | Project Admin | Member |
 | --------------------- | ----- | ------------- | ------ |
-| Create Project        | ✅     | ❌             | ❌      |
-| Manage Members        | ✅     | ❌             | ❌      |
-| Create / Update Tasks | ✅     | ✅             | ❌      |
-| View Tasks            | ✅     | ✅             | ✅      |
-| Update Subtask Status | ✅     | ✅             | ✅      |
-| Notes Management      | ✅     | ❌             | ❌      |
+| Create Project        | ✅    | ❌            | ❌     |
+| Manage Members        | ✅    | ❌            | ❌     |
+| Create / Update Tasks | ✅    | ✅            | ❌     |
+| View Tasks            | ✅    | ✅            | ✅     |
+| Update Subtask Status | ✅    | ✅            | ✅     |
+| Notes Management      | ✅    | ❌            | ❌     |
 
 ---
 
@@ -128,43 +128,43 @@ Three-tier permission system:
 
 ### Roles
 
-* `admin`
-* `project_admin`
-* `member`
+- `admin`
+- `project_admin`
+- `member`
 
 ### Task Status
 
-* `todo`
-* `in_progress`
-* `done`
+- `todo`
+- `in_progress`
+- `done`
 
 ---
 
 ## 🔒 Security Highlights
 
-* Token-based authentication
-* Refresh token rotation
-* Input validation on all routes
-* Secure email workflows
-* CORS configuration
+- Token-based authentication
+- Refresh token rotation
+- Input validation on all routes
+- Secure email workflows
+- CORS configuration
 
 ---
 
 ## 📌 Project Goals
 
-* Build a **real backend**, not a demo
-* Follow **industry-grade security practices**
-* Demonstrate **scalable API design**
-* Be easy to integrate with any frontend
+- Build a **real backend**, not a demo
+- Follow **industry-grade security practices**
+- Demonstrate **scalable API design**
+- Be easy to integrate with any frontend
 
 ---
 
 ## 🚧 Future Enhancements
 
-* Real-time notifications (WebSockets)
-* Activity logs & audit trails
-* Docker & CI/CD setup
-* Swagger / OpenAPI documentation
+- Real-time notifications (WebSockets)
+- Activity logs & audit trails
+- Docker & CI/CD setup
+- Swagger / OpenAPI documentation
 
 ---
 

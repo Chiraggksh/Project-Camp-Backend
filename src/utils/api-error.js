@@ -12,7 +12,8 @@ class ApiError extends Error {
     this.success = false;
     this.errors = errors;
 
-    if (stack) { //stack helps debug (shows where error happened) if not provided auto generate it 
+    if (stack) {
+      //stack helps debug (shows where error happened) if not provided auto generate it
       this.stack = stack;
     } else {
       Error.captureStackTrace(this, this.constructor);
