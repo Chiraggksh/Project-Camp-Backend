@@ -313,5 +313,29 @@ first step bnaoo: method register user = async handler me function definition ->
 
 */
 
-/* 
+/* validation:
+
+bhaii validation basically means to validate the data email ari h toh sahi aarhi h na: saahi format me ya password sahi aara h naa usko check krne kee lie we use validators...
+and turns out there are many express-validator, zod, yup etc 
+ye sb middlewares mee aate h and you can add as many so that it calculate error and pass to next
+
+3 files work: middleware, validator, and routes
+install express-validator, middleware me file validator.middleware.js
+import validationResult and APIError
+
+export function const validate jo lega req,res,next and validateResult(req) me errors lelo and check if error h ni toh next () ni tohh
+extracted errors ki array [] and then map function se lelo push errors.array().map krega push hoga {[err.path]:err.msg}
+
+then throw new error 422 message,array send
+
+now middleware done: validator ka kaam shuru as one file toh index.js toh body import krow from expreses-validator
+
+funct userregisterValidator bnaoo and export krdoww isee.....
+function me return arr[] and then jis jispe validation lgani h usko grab krow and then trim, notEmpty, withMessage, isEmail, etc
+username me b trim, empty, lowerCase etc
+
+now routes part: import kroge apni purani auth routes file me kyuki validation toh vahi lgane h naa register route me bhaiii
+.post me apna function se phle ye daldoo call krdoo it will collect error and then validate middleware or isko call naa krna it just takes data
+thats the best part ab tu login ka bhi validator bnaa skta h with this way thats the best part bhaiii
+
 */
