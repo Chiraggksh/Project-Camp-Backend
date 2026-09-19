@@ -1,7 +1,7 @@
 import { body } from "express-validator";
 
-const userRegisterValidator=()=>{
-    return [
+const userRegisterValidator = () => {
+  return [
     body("email")
       .trim()
       .notEmpty()
@@ -21,4 +21,4 @@ const userRegisterValidator=()=>{
   ];
 };
 
-export {userRegisterValidator};
+export { userRegisterValidator };

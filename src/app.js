@@ -2,6 +2,9 @@ import express from "express";
 import cors from "cors";
 
 const app = express();
+// import dns from 'node:dns';
+// dns.setServers(['8.8.8.8', '8.8.4.4']); //majorly used when dns system me error ara ho
+
 
 //some basic middleware configurations setup:
 app.use(express.json({ limit: "16kb" })); // Converts incoming JSON data → JavaScript object so u can access it using req.body vrna it will return as undefined
