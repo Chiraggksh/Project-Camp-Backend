@@ -1,15 +1,17 @@
 import express from "express";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 
 const app = express();
-// import dns from 'node:dns';
-// dns.setServers(['8.8.8.8', '8.8.4.4']); //majorly used when dns system me error ara ho
+import dns from 'node:dns';
+dns.setServers(['8.8.8.8', '8.8.4.4']); //majorly used when dns system me error ara ho
 
 
 //some basic middleware configurations setup:
 app.use(express.json({ limit: "16kb" })); // Converts incoming JSON data → JavaScript object so u can access it using req.body vrna it will return as undefined
 app.use(express.urlencoded({ extended: true, limit: "16kb" })); //use to accept data from url itself like form data ya url encoded data and extended true helps to send objects in objects nested objects used in form like { user: { name: 'Chirag', age: 21 } }
 app.use(express.static("public")); //helps to serve static files in this
+app.use(cookieParser());
 
 //cors configuration
 app.use(

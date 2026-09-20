@@ -112,6 +112,9 @@ basically controllers ka code export hokrr jata h route me : route use route krt
 /* CAtch error better with async handler
 vahi bhaii async await vala scene add krdo jb b db se lena ho so avoid too many try catch : next ka use in other way check in utils/async-handler and it is a genericc function
 u can use it anywhere
+
+neeed islie kyuki ab jb bhi mjhe await use krna hota m try-catch block lgaraa hotaa brr brr dikkt hotii if promise handle krna bhuljata to so ek function bnaya that will help me 
+so that repetitive task naa hojaeeee
 */
 
 /*user schema
@@ -121,7 +124,7 @@ mongoose helps u in having unique values, lowercase etc sb easy hojataaa h mongo
 
 required: [true, "kch bhi daalskte"]
 timestamps se created at and updated at aajata h
-mongooose se schema se methods and hooks bhi attack kiee ja skte h 
+mongooose se schema se methods and hooks bhi attach kiee ja skte h 
 
 schema bnaya using 2 {},{}
 first stores data and second stores timestamps: so schema can also store methods jo ki controller me jate vse ...so can also write methods as well as hooks
@@ -155,6 +158,8 @@ isko hi json web token bolte h .....validate krne me help krta h....digital sign
 used for auth and info exchange : once user logged in...hrr req me jwt include hota h....authorisation header info hoti h
 majorly used in authentication, authorization, session management, microservices etc and 
 normal problem yee thi agar jwt ni hota to ki session details hme db me store krni hotii hence not scalable so we came up with stateless jwt token idea
+so problem:
+heavy db/cache lookup hotaa, third party integration for security, distributed system bottleneck
 
 structure of jwt?
 header.payload.signature
@@ -338,4 +343,18 @@ now routes part: import kroge apni purani auth routes file me kyuki validation t
 .post me apna function se phle ye daldoo call krdoo it will collect error and then validate middleware or isko call naa krna it just takes data
 thats the best part ab tu login ka bhi validator bnaa skta h with this way thats the best part bhaiii
 
+*/
+
+/* login user with tokens and cookie data
+
+ab easy hojaega sirf controllers and routes bss ye kaam hogaa major
+
+login: take data-> validation -> if user exists and if exists and if pass correct then generate all tokens and send tokens in cookies
+express dont have cookies access: aapko package chahieee...package chahieee cookie-parser tooo it will help in read and write
+
+and then app.use cookieParser() 
+
+now try making login route: check controller function: adding routes and simplee
+
+now having validations to them and you just ahve to create login validator function and add it before that route thats itt sortedd
 */
