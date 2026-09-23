@@ -2,6 +2,7 @@ import Mailgen from "mailgen";
 import nodemailer from "nodemailer";
 
 const sendEmail = async (options) => {
+  //aapne bss theme bnai -> mailtrap configure kia -> transporter se bhjdia sipmle
   const mailGenerator = new Mailgen({
     theme: "default",
     product: {
