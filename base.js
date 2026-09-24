@@ -358,3 +358,26 @@ now try making login route: check controller function: adding routes and simplee
 
 now having validations to them and you just ahve to create login validator function and add it before that route thats itt sortedd
 */
+
+/* writing auth middleware
+
+now bhaii we are making a middleware jo ki check krega ki hrr req mee access token bhjaa jaraa h naa....ab dkhh tu yee hrr code me controller bnae yee krrskteaa h yaa fir ek hi filee bnalee middleware ki
+jo ki checkk kregii ki access token h ki nii yee vala way is much easier
+
+ab yee acess token ataa ksee h chrome mee by cookies and in mobile by header- authorization bearer token se 
+so what we will do access token jb aegaa to hum usse req ko intercept kregeee kyuki req,res contain krtaaa h requestss
+
+req me process krke usi object me inject krdegee aage kee lieee
+req jwt token already has id,email as data remember payload, data signature?
+
+check auth.middleware.js
+ */
+
+/* logout functionality
+
+now jo hmne middleware bnayaa that will be useful to extract and validate ki haa koi logged in user h then we will remove refresh token from database of that user
+and securely logout krdegeeee
+simple controller and route bnaoo and route me middleware attach krdega verifyJWT
+
+see logout functionality
+*/
